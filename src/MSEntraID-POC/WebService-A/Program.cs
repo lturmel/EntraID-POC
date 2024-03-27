@@ -1,3 +1,4 @@
+using System.Net;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Identity.Web;
 using Microsoft.Identity.Web.Resource;
@@ -24,7 +25,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-var scopeRequiredByApi = app.Configuration["AzureAd:Scopes"] ?? "";
+var roleRequiredByApi = app.Configuration["AzureAd:Roles"] ?? "";
 var summaries = new[]
 {
     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
@@ -32,8 +33,12 @@ var summaries = new[]
 
 app.MapGet("/weatherforecast", (HttpContext httpContext) =>
     {
-        httpContext.VerifyUserHasAnyAcceptedScope(scopeRequiredByApi);
-
+        //httpContext.VerifyUserHasAnyAcceptedScope(scopeRequiredByApi);
+        var isInRole = httpContext.User.IsInRole(roleRequiredByApi);
+        if (!isInRole)
+        {
+            throw new UnauthorizedAccessException();
+        }
         var forecast = Enumerable.Range(1, 5).Select(index =>
                 new WeatherForecast
                 (
