@@ -43,19 +43,18 @@ var result = await tokenClient.PostAsync(authUrl, new FormUrlEncodedContent(auth
 var token = JsonConvert.DeserializeObject<dynamic>(await result.Content.ReadAsStringAsync());
 Console.WriteLine(token);
 
-// var tokenString = token.access_token;
-// Console.WriteLine(tokenString);
-//
-// // Call API with Bearer Token that came from MS Entra ID
-//
-// var apiUrl = "https://localhost:7212/weatherforecast/";
-//
-// Console.WriteLine("Calling API: " + apiUrl);
-//
-// var client = new HttpClient();
-// //client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-// client.DefaultRequestHeaders.Add("Authorization", "Bearer " + tokenString);
-//
-// var response = await client.GetAsync(apiUrl);
-// var content = await response.Content.ReadAsStringAsync();
-// Console.WriteLine(content);
+var tokenString = token.access_token;
+
+// Call API with Bearer Token that came from MS Entra ID
+
+var apiUrl = "https://localhost:7212/weatherforecast/";
+
+Console.WriteLine("Calling API: " + apiUrl);
+
+var client = new HttpClient();
+//client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+client.DefaultRequestHeaders.Add("Authorization", "Bearer " + tokenString);
+
+var response = await client.GetAsync(apiUrl);
+var content = await response.Content.ReadAsStringAsync();
+Console.WriteLine(content);
