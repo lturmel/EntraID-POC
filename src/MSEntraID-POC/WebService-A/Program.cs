@@ -36,7 +36,7 @@ var summaries = new[]
 
 app.MapGet("/weatherforecast", (HttpContext httpContext) =>
     {
-        //httpContext.VerifyUserHasAnyAcceptedScope(scopeRequiredByApi);
+        //httpContext.VerifyUserHasAnyAcceptedScope("Custom.Reader");
         var isInRole = httpContext.User.IsInRole(roleRequiredByApi);
         if (!isInRole)
         {
