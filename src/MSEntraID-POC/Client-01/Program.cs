@@ -1,6 +1,4 @@
-﻿
-
-using System.Net.Http.Headers;
+﻿using System.Net.Http.Headers;
 using Newtonsoft.Json;
 
 var adInstance = "https://login.microsoftonline.com/";
@@ -30,11 +28,11 @@ tokenClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue
 //tokenClient.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json");
 
 var authContent = new List<KeyValuePair<string, string>> {
-    { new KeyValuePair<string, string>("client_id", adClientId) },
-    { new KeyValuePair<string, string>("client_secret", value) },
-    { new KeyValuePair<string, string>("scopes", "api://907e3ef0-2849-4f68-8e26-e4d6bc204713/.default")},
-    { new KeyValuePair<string, string>("resource", "api://907e3ef0-2849-4f68-8e26-e4d6bc204713") },
-    { new KeyValuePair<string, string>("grant_type", "client_credentials") },
+    { new ("client_id", adClientId) },
+    { new ("client_secret", value) },
+    { new ("scopes", "api://907e3ef0-2849-4f68-8e26-e4d6bc204713/.default")},
+    { new ("resource", "api://907e3ef0-2849-4f68-8e26-e4d6bc204713") },
+    { new ("grant_type", "client_credentials") },
 };
 
 var result = await tokenClient.PostAsync(authUrl, new FormUrlEncodedContent(authContent));

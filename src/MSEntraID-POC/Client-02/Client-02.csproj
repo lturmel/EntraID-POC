@@ -9,11 +9,18 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="Azure.Identity" Version="1.3.0" />
       <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     </ItemGroup>
 
     <ItemGroup>
       <Folder Include="Certs\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="Certs\orig\client02.pfx">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
 </Project>
