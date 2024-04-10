@@ -1,0 +1,12 @@
+[
+  {
+    "allowedMemberTypes": [
+      "Application"
+    ],
+    "description": "Reader role description",
+    "displayName": "Reader",
+    "isEnabled": true,
+    "origin": "Application",
+    "value": "Reader"
+  }
+]
