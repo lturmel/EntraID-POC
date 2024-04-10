@@ -10,7 +10,7 @@ var value = "C3U8Q~qJxaD2vtHXn0zUG90W6~Dr~dtHet8m1a61";
 
 
 // TODO: Get Jwt Token from Azure AD
-//var authUrl = $"https://login.microsoftonline.com/{adTenantId}/oauth2/token";
+
 var tokenClient = new HttpClient();
 var contentType = "application/x-www-form-urlencoded";
 
