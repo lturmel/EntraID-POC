@@ -9,6 +9,7 @@ var token = credential.GetTokenAsync(new Azure.Core.TokenRequestContext(["api://
 
 Console.WriteLine(token.Token);
 
+/*
 var tokenString = token.Token;
 
 // Call API with Bearer Token that came from MS Entra ID
@@ -22,5 +23,7 @@ var client = new HttpClient();
 client.DefaultRequestHeaders.Add("Authorization", "Bearer " + tokenString);
 
 var response = await client.GetAsync(apiUrl);
+
 var content = await response.Content.ReadAsStringAsync();
 Console.WriteLine(content);
+*/
