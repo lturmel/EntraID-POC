@@ -46,9 +46,10 @@
 
 **command to run**:
 ```pwsh
-az ad app create --display-name MyWeatherAPIService --sign-in-audience AzureADMyOrg `
+$result = (az ad app create --display-name MyWeatherAPIService --sign-in-audience AzureADMyOrg `
                  --required-resource-accesses myWeatherAPIService.permissions.json `
-                 --app-roles myWeatherAPIService.roles.json
+                 --app-roles myWeatherAPIService.roles.json | ConvertFrom-Json)
+az ad app update --id $result.id --identifier-uris "api://$($result.appId)"
 ```
 
 ### Client-01 App
@@ -90,8 +91,9 @@ az ad app create --display-name MyWeatherAPIService --sign-in-audience AzureADMy
 
 **command to run**:
 ```pwsh
-az ad app create --display-name MyWeatherConsumerApp01 --sign-in-audience AzureADMyOrg `
-                 --required-resource-accesses MyWeatherConsumerApp01.permissions.json
+$result = (az ad app create --display-name MyWeatherConsumerApp01 --sign-in-audience AzureADMyOrg `
+                 --required-resource-accesses MyWeatherConsumerApp01.permissions.json | ConvertFrom-Json)
+az ad app update --id $result.id --identifier-uris "api://$($result.appId)"
 ```
 
 ## Next Step:
@@ -140,8 +142,9 @@ az ad app create --display-name MyWeatherConsumerApp01 --sign-in-audience AzureA
 
 **command to run**:
 ```pwsh
-az ad app create --display-name MyWeatherConsumerApp02 --sign-in-audience AzureADMyOrg `
-                 --required-resource-accesses MyWeatherConsumerApp02.permissions.json
+$result = (az ad app create --display-name MyWeatherConsumerApp02 --sign-in-audience AzureADMyOrg `
+                 --required-resource-accesses MyWeatherConsumerApp02.permissions.json | ConvertFrom-Json)
+az ad app update --id $result.id --identifier-uris "api://$($result.appId)"
 ```
 
 ## Next Step:
