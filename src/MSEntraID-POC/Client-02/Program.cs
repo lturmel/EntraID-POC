@@ -1,10 +1,10 @@
 ﻿using System.Security.Cryptography.X509Certificates;
 using Azure.Identity;
 
-var adTenantId = "b046897f-c12f-49a4-9d20-65b78e454376";
-var adClientId = "5c093831-44f2-4b7c-b5f2-4b4843b0d69d";
+var adTenantId = "<MY_AD_TENANT_ID>";
+var adClientId = "<MY_CLIENT_02_APP_ID>";
 
-var apiClientId = "6af76b0a-bb24-498b-bc62-9e5433059f7d";
+var apiClientId = "<MY_WEATHER_API_SERVICE_APP_ID>";
 
 // Convert pem certificate to pfx
 // openssl pkcs12 -inkey key.pem -in cert.pem -export -out client02.pfx

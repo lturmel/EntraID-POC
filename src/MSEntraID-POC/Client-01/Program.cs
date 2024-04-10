@@ -1,9 +1,9 @@
-﻿var adTenantId = "b046897f-c12f-49a4-9d20-65b78e454376";
+﻿var adTenantId = "<MY_AD_TENANT_ID>";
 
-var adClientId = "b185aff9-1064-4d09-ba2d-ad64be3831f0";
-var value = "Du08Q~n0PENt7CJvH6IgkdS-s96efqAYr7TRTbp3";
+var adClientId = "<MY_CLIENT_01_APP_ID>";
+var value = "<MY_APP_SECRET_VALUE>";
 
-var apiClientId = "6af76b0a-bb24-498b-bc62-9e5433059f7d";
+var apiClientId = "<MY_WEATHER_API_SERVICE_APP_ID>";
 
 var credential = new Azure.Identity.ClientSecretCredential(adTenantId, adClientId, value);
 var token = credential.GetTokenAsync(new Azure.Core.TokenRequestContext([$"api://{apiClientId}/.default"])).Result;
