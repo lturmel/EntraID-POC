@@ -1,29 +1,23 @@
 ﻿var adTenantId = "b046897f-c12f-49a4-9d20-65b78e454376";
 
-// TestClient01 Application Id
-var adClientId = "d76c2277-f2c0-45ed-a242-b0ae5da25b77";
-var value = "C3U8Q~qJxaD2vtHXn0zUG90W6~Dr~dtHet8m1a61";
+var adClientId = "b185aff9-1064-4d09-ba2d-ad64be3831f0";
+var value = "Du08Q~n0PENt7CJvH6IgkdS-s96efqAYr7TRTbp3";
+
+var apiClientId = "6af76b0a-bb24-498b-bc62-9e5433059f7d";
 
 var credential = new Azure.Identity.ClientSecretCredential(adTenantId, adClientId, value);
-var token = credential.GetTokenAsync(new Azure.Core.TokenRequestContext(["api://907e3ef0-2849-4f68-8e26-e4d6bc204713/.default"])).Result;
-
+var token = credential.GetTokenAsync(new Azure.Core.TokenRequestContext([$"api://{apiClientId}/.default"])).Result;
 Console.WriteLine(token.Token);
 
-/*
-var tokenString = token.Token;
-
 // Call API with Bearer Token that came from MS Entra ID
-
+var tokenString = token.Token;
 var apiUrl = "https://localhost:7212/weatherforecast/";
-
-Console.WriteLine("Calling API: " + apiUrl);
+Console.WriteLine($"Calling API: {apiUrl}");
 
 var client = new HttpClient();
-//client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-client.DefaultRequestHeaders.Add("Authorization", "Bearer " + tokenString);
+client.DefaultRequestHeaders.Add("Authorization", $"Bearer {tokenString}");
 
 var response = await client.GetAsync(apiUrl);
 
 var content = await response.Content.ReadAsStringAsync();
 Console.WriteLine(content);
-*/
